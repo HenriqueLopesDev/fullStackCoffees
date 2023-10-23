@@ -1,5 +1,6 @@
 package coffee.fullstack.fullstackcoffee.domain.coffee.mapper;
 
+import coffee.fullstack.fullstackcoffee.application.coffee.dto.CoffeeCategoryResponseDTO;
 import coffee.fullstack.fullstackcoffee.application.coffee.dto.CoffeeResponseDTO;
 import coffee.fullstack.fullstackcoffee.application.coffee.dto.CoffeeResquestDTO;
 import coffee.fullstack.fullstackcoffee.common.helpers.date.DateFormatter;
@@ -16,17 +17,23 @@ public class CoffeeMapper {
                 coffee.getDescription(),
                 coffee.getPrice(),
                 DateFormatter.toBrazilianFriendlyDate(coffee.getCreatedAt()),
-                CategoryMapper.ToDTO(coffee.getCategory())
+                CoffeeMapper.toSimpleCoffeeCategoryDTO(coffee.getCategory())
         );
     }
 
-    public static Coffee toEntity(CoffeeResquestDTO coffee){
-        Category category = new Category(coffee.category().id());
+    public static Coffee toEntity(CoffeeResquestDTO coffee) {
         return new Coffee(
                 coffee.name(),
                 coffee.description(),
                 coffee.price(),
-                category
+                new Category(coffee.category().id(), coffee.category().name())
+        );
+    }
+
+    public static CoffeeCategoryResponseDTO toSimpleCoffeeCategoryDTO(Category category){
+        return new CoffeeCategoryResponseDTO(
+                category.getId(),
+                category.getName()
         );
     }
 }
