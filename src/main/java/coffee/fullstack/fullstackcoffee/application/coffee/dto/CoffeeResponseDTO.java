@@ -4,6 +4,6 @@ import coffee.fullstack.fullstackcoffee.application.category.dto.CategoryRespons
 
 import java.util.UUID;
 
-public record CoffeeResponseDTO(UUID id, String name, String description, double price, String createdAt, CategoryResponseDTO category) {
+public record CoffeeResponseDTO(UUID id, String name, String description, double price, String createdAt, CoffeeCategoryResponseDTO category) {
 
 }

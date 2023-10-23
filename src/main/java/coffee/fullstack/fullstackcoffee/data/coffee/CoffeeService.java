@@ -26,9 +26,7 @@ public class CoffeeService {
     }
 
     public Coffee saveCoffee(Coffee coffee) {
-        Coffee coffe = coffeeRepository.save(coffee);
-        coffe.setCategory(categoryService.findCategoryById(coffee.getCategory().getId()));
-        return coffe;
+        return coffeeRepository.save(coffee);
     }
 
     @Transactional
