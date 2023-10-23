@@ -5,6 +5,7 @@ import jakarta.validation.constraints.NotBlank;
 import java.util.UUID;
 
 public record CoffeeCategoryRequestDTO(
-        UUID id
+        UUID id,
+        String name
 ) {
 }
