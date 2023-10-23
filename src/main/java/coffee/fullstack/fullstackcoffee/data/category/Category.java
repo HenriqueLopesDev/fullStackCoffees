@@ -24,11 +24,16 @@ public class Category {
 
     private LocalDateTime createdAt;
 
+    public Category(UUID id, String name) {
+        setId(id);
+        setName(name);
+    }
+
     public Category(String name) {
         setName(name);
     }
 
-    public Category(UUID id){
+    public Category(UUID id) {
         setId(id);
     }
 }
